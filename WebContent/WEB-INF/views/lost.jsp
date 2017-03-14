@@ -23,6 +23,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="javascript/typed.js" type="text/javascript"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
     <script>
     $(document).ready(function() {
     	responsiveVoice.speak("<%=message%>"+"<%=message1%>"+"Let me try and help."+"Click On The Below Links for Navigations.", "UK English Male",{rate:1});
@@ -51,7 +52,6 @@
     function foo(){ console.log("Callback"); }
 
     </script>
-    <link href="stylemy.css" rel="stylesheet"/>
     <style>
         /* code for animated blinking cursor */
         .typed-cursor{
@@ -119,7 +119,7 @@
 
 <c:if test="${empty sessionScope.admin}">
 <c:if test="${empty sessionScope.student}">
-<a href="<c:url value="./home.jsp"/>" style="font-size: 25px;">Go Back</a><br>
+<a href="<c:url value="/"/>" style="font-size: 25px;">Go Back</a><br>
 </c:if>
 </c:if>
 

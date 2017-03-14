@@ -1,11 +1,18 @@
 package com.test.bean;
 
-public abstract class User {
+import org.hibernate.validator.constraints.NotEmpty;
+
+public class User {
+	@NotEmpty
     private String username;
+	@NotEmpty
     private String password;
     
+    public User(){
+    	
+    }
+    
     public User(String username, String password) {
-//		super();
 		this.username = username;
 		this.password = password;
 	}
@@ -23,6 +30,12 @@ public abstract class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + "]";
+	}
+	
     
     
 }
