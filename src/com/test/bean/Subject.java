@@ -6,6 +6,9 @@ public class Subject {
 	private String start;
 	private String end; 
 	
+	public Subject(){
+		
+	}
 	
 	public Subject(int subjectId, String subject, String start, String end) {
 		super();

@@ -3,7 +3,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.test.bean.Question"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,10 +12,8 @@
 <title>ONLINE TEST</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style1.css" />
-<script src="${pageContext.request.contextPath}/javascript/test.js"
-	type="text/javascript"></script>
+<link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
+<script src="<c:url value='/static/javascript/test.js'/>" type="text/javascript"></script>
 <style type="text/css">
 body {
 	color: white;
@@ -45,26 +44,8 @@ a {
 	overflow: auto;
 }
 </style>
-<%
-	if (session.getAttribute("giveTestSession") != null) {
-		session.setAttribute("dontGive", "hello");
-%>
-<script>
-	$(document).ready(function() {
-		$("#test").submit();
-	});
-</script>
-<%
-	}
-	if (session.getAttribute("giveTestSession") == null) {
-		session.setAttribute("giveTestSession", "hello");
-	}
-%>
 </head>
 <body>
-	<c:if test="${empty sessionScope.student}">
-		<c:redirect url="/home.jsp" />
-	</c:if>
 	<%
 		ArrayList<Question> ques = (ArrayList<Question>) session.getAttribute("Questions");
 		int que = 0;
@@ -73,39 +54,25 @@ a {
 	<form action="${pageContext.request.contextPath}/Result" id="test"
 		method="post">
 		<div class="form">
-			<%
-				for (Question quest : ques) {
-			%>
+			<c:forEach var="questions"
+							items="${Questions}">
 			<div class="question">
 				<ol class="mySlides">
 					<h3>
 						QuestionNo:
 						<%=++que%></h3>
-					<h3><%=quest.getQuestion()%></h3>
-					<li><input type="radio" name="<%=quest.getQuestionId()%>"
-						value="<%=quest.getChoice1()%>"><%=quest.getChoice1()%></li>
-					<li><input type="radio" name="<%=quest.getQuestionId()%>"
-						value="<%=quest.getChoice2()%>"><%=quest.getChoice2()%></li>
-					<li><input type="radio" name="<%=quest.getQuestionId()%>"
-						value="<%=quest.getChoice3()%>"><%=quest.getChoice3()%></li>
-					<li><input type="radio" name="<%=quest.getQuestionId()%>"
-						value="<%=quest.getChoice4()%>"><%=quest.getChoice4()%></li>
+					<h3>${questions.question}</h3>
+					<li><input type="radio" name="${questions.questionId}"
+						value="${questions.choice1}">${questions.choice1}</li>
+					<li><input type="radio" name="${questions.questionId}"
+						value="${questions.choice2}">${questions.choice2}</li>
+					<li><input type="radio" name="${questions.questionId}"
+						value="${questions.choice3}">${questions.choice3}</li>
+					<li><input type="radio" name="${questions.questionId}"
+						value="${questions.choice4}">${questions.choice4}</li>
 				</ol>
-
-
-
-
-				<!--  						<div class="leftRight">
-							<a class="left" id="lef" onclick="plusDivs(-1)">&#10094;</a>
-							<div id="timer_div"></div>
- 							<a class="right" id="rig" onclick="plusDivs(1)">&#10095;</a>
- 							<br>
- 							</div>
-				 -->
 			</div>
-			<%
-				}
-			%>
+			</c:forEach>
 			<div class="leftRight">
 				<div class="arrow bounce">
 					<a class="fa fa-arrow-down fa-2x" onclick="plusDivs(-1)">&#10094;prev</a>

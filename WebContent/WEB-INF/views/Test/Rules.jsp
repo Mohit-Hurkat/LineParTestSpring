@@ -5,29 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style1.css"/>
+<link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
 <title>RULES PAGE</title>
 <style>
 p{
 color:white;
 }
 </style>
-<%
-if(session.getAttribute("giveTestSession")!=null){
-	session.setAttribute("forceSubmit", "force");
-    response.sendRedirect("./Test/giveTest.jsp");
-}
-%>
 </head>
 <body>
 <div class="form" style="margin: 40px 300px 40px 300px;text-align: center;">
     <div class="wrap">
-  <form action="${pageContext.request.contextPath}/GiveTest" >
-  <input type="hidden" name="subjectIdd" value="<%=(Integer)request.getAttribute("sessionSubjectId")%>">
+  <form action="./GiveTestFinal" >
 <p>------------Don't Press Anything Until The Test Starts------------</p>
 		<p>-------------------INSTRUCTIONS FOR ONLINE EXAM-------------------</p>
-		<p>You will be given only 25 seconds to attempt every question</p>
-		<p>You can't skip any question</p>
+		<p>You will be given only 300 seconds to attempt every question</p>
+		<p>You can skip a question</p>
 		<p>Every question has 4 options out of which only one is correct</p>
 		<p>You can't attempt the same test twice</p>
 		<p>Once answered you can't change your answer</p>
