@@ -5,15 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style1.css"/>
+<link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
 <title>UPDATED</title>
 </head>
-<%String message=(String)request.getAttribute("studentUpdate");%>
 <body>
-<c:if test="${empty sessionScope.student}"><c:redirect url="/home.jsp" /></c:if> 
 <div class="form">
-          <h1 class="sign"><%=message%></h1>
-         <button  class="back-button"><a href="home.jsp" >BACK</a></button>
+          <h1 class="sign">${studentMessage}</h1>
+<c:import url="./studentBack.jsp"/>
 </div>
 </body>
 </html>

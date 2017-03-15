@@ -31,7 +31,6 @@ function Validation() {
 </script>
 </head>
 <body>
-<c:if test="${empty sessionScope.student}"><c:redirect url="/home.jsp" /></c:if> 
 <div class="form">
 <form:form action="./studentUpdateFinal" method="post" commandName="student">
           <div class="top-row">
@@ -54,7 +53,7 @@ function Validation() {
             <form:label path="password" class="active highlight">            
             Update Password(0-9,A-Z,a-z required)<span class="req">*</span>
             </form:label>
-            <form:input path="password" type="password" name="updatePassword" id="updatePassword"/>
+            <form:input path="password" name="updatePassword" id="updatePassword"/>
           	</div>  
           	 
           	<div class="field-wrap">
@@ -75,9 +74,7 @@ function Validation() {
           </div><!-- top-row -->
 </form:form><br>
 
- <form action="/Student" method="post">
- <input type="submit" class="button-block" value="Back">
- </form>
+<c:import url="./studentBack.jsp"/>
 </div>
 </body>
 </html>

@@ -17,15 +17,10 @@ import com.test.bl.StudentLogic;
 import com.test.bl.SubjectLogic;
 
 @Controller
-@SessionAttributes({"student","studentSession"})
+@SessionAttributes({"stud","studentSession","user"})
 public class StudentActivityController{
 	private SubjectLogic subjectLogic=new SubjectLogic();
 	private StudentLogic studentLogic=new StudentLogic();
-	
-	@RequestMapping(value="/Student", method = RequestMethod.POST)
-	public String Student(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
-		return "./Student/student";
-	}
 	
 	@RequestMapping(value="/studentTest", method = RequestMethod.POST)
 	public String GiveTest(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
@@ -40,16 +35,19 @@ public class StudentActivityController{
 	@RequestMapping(value="/studentUpdate")
 	public String StudentUpdate(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("f");
-		User user=(User) model.get("student");
-		Student student=studentLogic.search(user.getUsername());
+		Student student=(Student) model.get("studentSession");
+		student=studentLogic.search(student.getUsername());
 		model.addAttribute("student", student);
 			return "./Student/studentUpdateInfo";
 	}
 	
 	@RequestMapping(value="/studentUpdateFinal")
-	public String StudentUpdateFinal(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
+	public String StudentUpdateFinal(ModelMap model,Student student) throws ClassNotFoundException, IOException, SQLException {
 		System.out.println("g");
-		Student student=(com.test.bean.Student) model.get("student");
+		System.out.println(student);
+		Student stud=(Student) model.get("studentSession");
+		student.setUsername(stud.getUsername());
+		System.out.println(student);
 		if(studentLogic.update(student.getUsername(), student)){
 			model.addAttribute("studentMessage", "Successfully Updated.");
 			return "./Student/updateStudent";
@@ -58,4 +56,8 @@ public class StudentActivityController{
 		
 	}
 	
+	@RequestMapping(value="/StudentBack", method = RequestMethod.POST)
+	public String StudentBack(ModelMap model) {
+		return "./Student/student";
+	}
 }

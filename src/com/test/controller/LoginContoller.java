@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.test.bean.Admin;
 import com.test.bean.Student;
 import com.test.bean.User;
 import com.test.bl.AdminLogic;
@@ -20,7 +21,7 @@ import com.test.bl.StudentLogic;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes({"student","admin"})
+@SessionAttributes({"studentSession","adminSession"})
 public class LoginContoller {
 	private AdminLogic adminLogic = new AdminLogic();
 	private StudentLogic studentLogic = new StudentLogic();
@@ -56,7 +57,8 @@ public class LoginContoller {
 		else{
 			if(user.getUsername().equals("admin")){
 				if(adminLogic.check(user.getUsername(), user.getPassword())){
-					model.addAttribute("admin",user);
+					Admin admin= adminLogic.search(user.getUsername());
+					model.addAttribute("admin",admin);
 					return"/Admin/adminSignIn";
 				}
 				else{
@@ -67,7 +69,8 @@ public class LoginContoller {
 			}
 			else{
 				if(studentLogic.check(user.getUsername(),user.getPassword())){
-					model.addAttribute("student",user);
+					Student student=studentLogic.search(user.getUsername());
+					model.addAttribute("studentSession", student);
 					return "/Student/student";
 				}
 				else{
