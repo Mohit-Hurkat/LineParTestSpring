@@ -14,7 +14,7 @@
     </script>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if> 
+<c:if test="${sessionScope.mohit!='admin'}"><c:redirect url="/home.jsp" /></c:if> 
 	<div class="form">
       
       	<ul class="tab-group">

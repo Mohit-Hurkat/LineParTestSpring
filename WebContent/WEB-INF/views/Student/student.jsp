@@ -23,8 +23,8 @@ audio.play();
 %>
 </head>
 <body>
-	<c:if test="${empty sessionScope.student}">
-		<c:redirect url="/home.jsp" />
+	<c:if test="${sessionScope.mohit!='student'}">
+		<c:redirect url="/" />
 	</c:if>
 	<%@include file="./studentHeader.jsp"%>
 	<%@include file="../logout.jsp"%>

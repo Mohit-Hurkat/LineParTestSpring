@@ -45,7 +45,7 @@
 			<div id="signup">
 				<h1 class="sign"><spring:message code="label.signUp"></spring:message></h1>
 
-				<form:form method="post" action="./signIn/" commandName="student">
+				<form:form method="post" action="./signUp/" commandName="student">
 				<div class="top-row">
 					<div class="field-wrap">
 						<form:label path="name"><spring:message code="label.name"></spring:message><span class="req">*</span></form:label> 

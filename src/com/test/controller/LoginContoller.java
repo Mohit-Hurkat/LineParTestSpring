@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,16 +13,21 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.test.bean.Student;
 import com.test.bean.User;
 import com.test.bl.AdminLogic;
+import com.test.bl.StudentLogic;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("mohit")
 public class LoginContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminLogic adminLogic = new AdminLogic();
+	private StudentLogic studentLogic = new StudentLogic();
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String newLogin(ModelMap model) {
@@ -32,11 +38,12 @@ public class LoginContoller extends HttpServlet {
 		return "home";
 	}
 	
-	@RequestMapping(value="/signIn", method = RequestMethod.POST)
+	@RequestMapping(value="/signUp", method = RequestMethod.POST)
 	public String signIn(ModelMap model,@Valid Student student, BindingResult result) {
 		if(result.hasErrors()){
 			model.addAttribute("user", new User());
-			return "home";
+			return "home";  //"redirect:/signUp/";
+
 		}
 		else{
 			return "lost";
@@ -44,6 +51,7 @@ public class LoginContoller extends HttpServlet {
 	}
 	
 	@RequestMapping(value="/logIn", method = RequestMethod.POST)
+
 	public String logIn(HttpSession session,ModelMap model,@Valid User user, BindingResult result) throws ClassNotFoundException, IOException, SQLException {
 		if(result.hasErrors()){
 			model.addAttribute("student", new Student());
@@ -52,7 +60,7 @@ public class LoginContoller extends HttpServlet {
 		else{
 			if(user.getUsername().equals("admin")){
 				if(adminLogic.check(user.getUsername(), user.getPassword())){
-					session.setAttribute("admin", "admin");
+					model.addAttribute("mohit", "admin");
 					return"/Admin/adminSignIn";
 				}
 				else{
@@ -61,7 +69,18 @@ public class LoginContoller extends HttpServlet {
 					return "../lost";
 				}
 			}
-			return "lost";
+			else{
+				if(studentLogic.check(user.getUsername(),user.getPassword())){
+					model.addAttribute("mohit", "student");
+					return "/Student/student";
+				}
+				else{
+					session.setAttribute("message", "Invalid Credentials");
+					session.setAttribute("message1", "Please Go Back To LogIn");
+					return "../lost";
+				}
+				
+			}			
 		}
 	}
 }
