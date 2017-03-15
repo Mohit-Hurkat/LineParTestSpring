@@ -63,8 +63,6 @@ public class StudentHelper extends HttpServlet {
 			String sphone=request.getParameter("updatePhone");
 			String semail=request.getParameter("updateEmail");
 			Student student=new Student(suname, spass, sname, sphone, semail);
-			
-				
 				if(lc.update(suname, student))
 				{
 					request.setAttribute("studentUpdate","Successfully Updated.");

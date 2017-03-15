@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         <%@page import="com.test.bean.Student" %>
+        <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,8 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>UPDATE INFORMATION</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/stylemy.css"/>
-    <script src="../javascript/homepage.js" type="text/javascript"></script>
+	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
     <script>
 $(document).ready(function() {
         $("#updateInfo").addClass("active");
@@ -32,45 +33,49 @@ function Validation() {
 <body>
 <c:if test="${empty sessionScope.student}"><c:redirect url="/home.jsp" /></c:if> 
 <div class="form">
-<form action="../StudentHelper?update=update" method="post">
-          
+<form:form action="./studentUpdateFinal" method="post" commandName="student">
           <div class="top-row">
+          	
           	<div class="field-wrap">
-            <label class="active highlight">
+            <form:label path="name" class="active highlight">
            Student name<span class="req">*</span>
-            </label>
-            <input type="text"  name="updateName" value="${studentUpdate.name}" required autocomplete="off"/>
+            </form:label>
+            <form:input path="name" name="updateName"/>
             </div>
+            
 			<div class="field-wrap">
-            <label class="active highlight">            
+            <form:label path="email" class="active highlight">            
           Update Email Address<span class="req">*</span>
-            </label>
-            <input type="email"  name="updateEmail" value="${studentUpdate.email}" required autocomplete="off"/>
+            </form:label>
+            <form:input path="email"  name="updateEmail"/>
           	</div>
+          	
             <div class="field-wrap">
-            <label class="active highlight">            
+            <form:label path="password" class="active highlight">            
             Update Password(0-9,A-Z,a-z required)<span class="req">*</span>
-            </label>
-            <input type="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$" name="updatePassword" id="updatePassword" required autocomplete="off"/>
-          	</div>   
-          	<div class="field-wrap">
-            <label class="active highlight">            
-           Confirm Password<span class="req">*</span>
-            </label>
-            <input type="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$" name="confirmPassword" id="confirmPassword" required autocomplete="off" onBlur="Validation();"/>
+            </form:label>
+            <form:input path="password" type="password" name="updatePassword" id="updatePassword"/>
           	</div>  
+          	 
           	<div class="field-wrap">
-            <label class="active highlight">            
+            <form:label path="" class="active highlight">            
+           Confirm Password<span class="req">*</span>
+            </form:label>
+            <form:input path="" type="password" name="confirmPassword" id="confirmPassword" onBlur="Validation();"/>
+          	</div>
+          	  
+          	<div class="field-wrap">
+            <form:label path="phone" class="active highlight">            
           Update Phone No (10 digits)<span class="req">*</span>
-            </label>
-            <input type="tel"  name="updatePhone" pattern="^\d{10}$" value="${studentUpdate.phone}" required autocomplete="off" />
+            </form:label>
+            <form:input path="phone" name="updatePhone" pattern="^\d{10}$"/>
             </div>
             
           <input type="submit" class="button button-block" value="Submit">
           </div><!-- top-row -->
-</form><br>
+</form:form><br>
 
- <form action="${pageContext.request.contextPath}/Student/student.jsp" method="post">
+ <form action="/Student" method="post">
  <input type="submit" class="button-block" value="Back">
  </form>
 </div>

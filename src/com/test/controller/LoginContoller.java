@@ -3,8 +3,6 @@ package com.test.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,7 +11,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.test.bean.Student;
@@ -23,9 +20,8 @@ import com.test.bl.StudentLogic;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("mohit")
-public class LoginContoller extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@SessionAttributes({"student","admin"})
+public class LoginContoller {
 	private AdminLogic adminLogic = new AdminLogic();
 	private StudentLogic studentLogic = new StudentLogic();
 	
@@ -39,7 +35,7 @@ public class LoginContoller extends HttpServlet {
 	}
 	
 	@RequestMapping(value="/signUp", method = RequestMethod.POST)
-	public String signIn(ModelMap model,@Valid Student student, BindingResult result) {
+	public String signUp(ModelMap model,@Valid Student student, BindingResult result) {
 		if(result.hasErrors()){
 			model.addAttribute("user", new User());
 			return "home";  //"redirect:/signUp/";
@@ -60,24 +56,24 @@ public class LoginContoller extends HttpServlet {
 		else{
 			if(user.getUsername().equals("admin")){
 				if(adminLogic.check(user.getUsername(), user.getPassword())){
-					model.addAttribute("mohit", "admin");
+					model.addAttribute("admin",user);
 					return"/Admin/adminSignIn";
 				}
 				else{
 					session.setAttribute("message", "Invalid Credentials");
 					session.setAttribute("message1", "Hey Admin,We Don't Expect This From You.");
-					return "../lost";
+					return "lost";
 				}
 			}
 			else{
 				if(studentLogic.check(user.getUsername(),user.getPassword())){
-					model.addAttribute("mohit", "student");
+					model.addAttribute("student",user);
 					return "/Student/student";
 				}
 				else{
 					session.setAttribute("message", "Invalid Credentials");
 					session.setAttribute("message1", "Please Go Back To LogIn");
-					return "../lost";
+					return "lost";
 				}
 				
 			}			
