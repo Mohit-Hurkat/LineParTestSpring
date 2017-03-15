@@ -27,6 +27,6 @@ audio.play();
 		<c:redirect url="/home.jsp" />
 	</c:if>
 	<%@include file="./studentHeader.jsp"%>
-	<%@include file="../Test/logout.jsp"%>
+	<%@include file="../logout.jsp"%>
 </body>
 </html>
