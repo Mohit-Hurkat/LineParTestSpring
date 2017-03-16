@@ -11,7 +11,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
-<script src="<c:url value='/static/javascript/homepage.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/static/javascript/homepage.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.tab a').on('click', function(e) {
@@ -45,7 +45,7 @@
 			<div id="signup">
 				<h1 class="sign"><spring:message code="label.signUp"></spring:message></h1>
 
-				<form:form method="post" action="./signUp/" commandName="student">
+				<form:form method="post" action="${pageContext.request.contextPath}/signUp/" commandName="student">
 				<div class="top-row">
 					<div class="field-wrap">
 						<form:label path="name"><spring:message code="label.name"></spring:message><span class="req">*</span></form:label> 

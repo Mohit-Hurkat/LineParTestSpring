@@ -44,7 +44,7 @@
 			<li class="tab " id="subject"><a>Subject</a>
 				<ul class="dropdown-content">
 					<li style="height: 49px;"></li>
-					<li class="float"><a href="../SubjectHelper?display=display">Delete
+					<li class="float"><a href="./deleteSubjectAdmin">Delete
 							Subject</a></li>
 					<li class="float"><a href="../SubjectHelper?display1=display1">Display
 							Subject</a></li>

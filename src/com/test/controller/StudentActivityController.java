@@ -34,10 +34,6 @@ public class StudentActivityController{
 	private QuestionLogic questionLogic=new QuestionLogic();
 	private ResultLogic resultLogic=new ResultLogic();
 	
-	@RequestMapping(value="/StudentBack", method = RequestMethod.POST)
-	public String StudentBack(ModelMap model) {
-		return "./Student/student";
-	}
 	
 	@RequestMapping(value="/studentUpdate")
 	public String StudentUpdate(ModelMap model) throws ClassNotFoundException, IOException, SQLException {

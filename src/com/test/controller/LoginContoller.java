@@ -43,13 +43,14 @@ public class LoginContoller {
 
 		}
 		else{
+			
 			return "lost";
 		}
 	}
 	
 	@RequestMapping(value="/logIn", method = RequestMethod.POST)
 
-	public String logIn(HttpSession session,ModelMap model,@Valid User user, BindingResult result) throws ClassNotFoundException, IOException, SQLException {
+	public String logIn(ModelMap model,@Valid User user, BindingResult result) throws ClassNotFoundException, IOException, SQLException {
 		if(result.hasErrors()){
 			model.addAttribute("student", new Student());
 			return "home";
@@ -62,8 +63,8 @@ public class LoginContoller {
 					return"/Admin/adminSignIn";
 				}
 				else{
-					session.setAttribute("message", "Invalid Credentials");
-					session.setAttribute("message1", "Hey Admin,We Don't Expect This From You.");
+//					session.setAttribute("message", "Invalid Credentials");
+//					session.setAttribute("message1", "Hey Admin,We Don't Expect This From You.");
 					return "lost";
 				}
 			}
@@ -74,12 +75,24 @@ public class LoginContoller {
 					return "/Student/student";
 				}
 				else{
-					session.setAttribute("message", "Invalid Credentials");
-					session.setAttribute("message1", "Please Go Back To LogIn");
+//					session.setAttribute("message", "Invalid Credentials");
+//					session.setAttribute("message1", "Please Go Back To LogIn");
 					return "lost";
 				}
 				
 			}			
 		}
 	}
+	
+	@RequestMapping(value="/StudentBack", method = RequestMethod.POST)
+	public String StudentBack(ModelMap model) {
+		return "./Student/student";
+	}
+	
+	@RequestMapping(value="/AdminBack", method = RequestMethod.POST)
+	public String AdminBack(ModelMap model) {
+		return "./Admin/adminSignIn";
+	}
+	
+	
 }

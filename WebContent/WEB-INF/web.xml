@@ -138,4 +138,14 @@
     <servlet-name>StudentActivityController</servlet-name>
     <url-pattern>/Student</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminSubjectController</display-name>
+    <servlet-name>AdminSubjectController</servlet-name>
+    <servlet-class>com.test.controller.AdminSubjectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSubjectController</servlet-name>
+    <url-pattern>/AdminSubject</url-pattern>
+  </servlet-mapping>
 </web-app>

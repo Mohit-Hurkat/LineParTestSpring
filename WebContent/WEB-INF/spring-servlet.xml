@@ -30,17 +30,16 @@
         <property value="UTF-8" name="defaultEncoding"/>
     </bean>
    
-    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" id="localeChangeInterceptor">
-        <property value="lang" name="paramName"/>
-    </bean>
-    
     <bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver" id="localeResolver">
         <property value="de" name="defaultLocale"/>
     </bean>
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" id="handlerMapping">
-        <property name="interceptors">
-            <ref bean="localeChangeInterceptor"/>
-    </property>
-</bean>
+    
+    <mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors> 
+   
 	
 </beans>
