@@ -18,7 +18,7 @@
 <body>
 	<div class="form">
 		<div class="tab-group">
-			<form action="./adminSubjectDelete" method="post" id="deleteSubject">
+			<form:form action="./adminSubjectDelete" method="post" id="deleteSubject" commandName="subject">
 
 				<div style="color: white;">
 					<table border="1" style="width: 100%;">
@@ -33,16 +33,16 @@
 								<td>${subjectDisplay.subject}</td>
 								<td>${subjectDisplay.start}</td>
 								<td>${subjectDisplay.end}</td>
-								<td><input type="radio" name="subjectId"
-									value="${subjectDisplay.getSubjectId()}"></td>
+								<td><form:radiobutton path="subjectId"
+									value="${subjectDisplay.getSubjectId()}"></form:radiobutton></td>
 									<tr>
 							</c:forEach>
 						</tr>
 					</table>
 				</div>
 				<br>
-				<input type="submit"  class="button-block" value="delete" name="delete">
-			</form>
+				<button type="submit" class="button button-block" name="delete">Delete</button>
+			</form:form>
 		</div>
 		<br>
 	<c:import url="../adminBack.jsp"/>

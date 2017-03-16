@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,25 @@ public class AdminSubjectController{
 	public String DeleteSubject(ModelMap model) throws ClassNotFoundException, IOException, SQLException{
 		List<Subject> subjectDisplay=subjectLogic.displayAll();
 		model.addAttribute("subjectDisplayAll", subjectDisplay);
+		Subject subject=new Subject();
+		model.addAttribute("subject", subject);
 		return "./Admin/AdminSubject/deleteSubject";
 	}
 	
 	@RequestMapping(value="/adminSubjectDelete")
-	public String DeleteSubjectFinal(ModelMap model) throws ClassNotFoundException, IOException, SQLException{
+	public String DeleteSubjectFinal(ModelMap model,Subject subject) throws ClassNotFoundException, IOException, SQLException{
+		int subjectId=subject.getSubjectId();
 		
-		return "./Admin/AdminSubject/deleteSubject";
+//		int subjectId=(int)request.getAttribute("subjectId");
+		System.out.println(subjectId);
+		if(subjectLogic.delete(subjectId))
+		{
+			model.addAttribute("mess", "Successfully Deleted.");
+			return "./Admin/adminSubject";
+		}
+		else{
+			return "lost";
+		}
 	}
 	
 	@RequestMapping(value="/displaySubjectAdmin")

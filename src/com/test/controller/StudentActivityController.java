@@ -13,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.test.bean.Question;
 import com.test.bean.Result;
@@ -68,7 +67,8 @@ public class StudentActivityController{
 	@RequestMapping(value="/studentTest")
 	public String GiveTest(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
 		List<Subject> subjectDisplay=subjectLogic.displayAll();
-		if(subjectDisplay!=null){
+		List<Subject> sub=new ArrayList<>();
+		if(!subjectDisplay.equals(sub)){
 			model.addAttribute("subjectDisplay",subjectDisplay);
 			Subject subject=new Subject();
 			model.addAttribute("subject", subject);

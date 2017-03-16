@@ -40,8 +40,8 @@ input[type=radio] {
 							<th>Examination End Date</th>
 							<th>Select</th>
 						</tr>
-						<c:forEach var="subjectDisplayAll"
-							items="${subjectDisplayAll}">
+						<c:forEach var="subjectDisplay"
+							items="${subjectDisplay}">
 							<tr>
 								<td>${subjectDisplay.subjectId}</td>
 								<td>${subjectDisplay.subject}</td>
