@@ -133,12 +133,19 @@ public class StudentActivityController{
 		resultLogic.set(student.getUsername(), subjectId, count);
 		Subject subject=subjectLogic.search(subjectId);
 		model.addAttribute("Subject", subject);
-//		List<Question> ques= (List<Question>) model.get("sessionQuestions");
-//		System.out.println(ques);
-//		question=(List<Question>) model.get("question");
-//		System.out.println(question+"hell");
 		return "./Student/printBack";
 	}
 	
+	@RequestMapping(value="/studentResult")
+	public String StudentResult(ModelMap model) throws ClassNotFoundException, IOException, SQLException, InterruptedException {
+		Student student=(Student) model.get("studentSession");
+		List<Result> resultList=resultLogic.show(student.getUsername());
+		List<Question> result=new ArrayList<>();
+		if(!resultList.equals(result)){
+			model.addAttribute("resultList", resultList);
+			return "./Student/studentPrevResult";
+		}
+		return null;
+	}
 	
 }

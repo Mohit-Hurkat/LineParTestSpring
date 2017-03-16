@@ -26,9 +26,9 @@
 				<h1>Test Completed</h1>
 				<div id="content" style="color: white;">
 					<h2>
-						Username:${sessionStudent.username }</h2>
+						Username: ${sessionStudent.username}</h2>
 											<h2>
-						Subject:${Subject.subject}</h2>
+						Subject: ${Subject.subject}</h2>
 					<h2>
 						Result: ${testResult} %</h2>
 				</div>
@@ -38,10 +38,7 @@
 		<input type="button" onclick="javascript:demoFromHTML();"
 			class="button-block" id="pdf" value="Save As Pdf"><br>
 		<br>
-		<form action="${pageContext.request.contextPath}/StudentHelper?printt=printt"
-			method="post">
-			<input type="submit" class="button-block" value="Back">
-		</form>
+<c:import url="./studentBack.jsp"/>
 	</div>
 </body>
 </html>

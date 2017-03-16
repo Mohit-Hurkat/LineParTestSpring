@@ -56,9 +56,9 @@ public class LoginContoller {
 		}
 		else{
 			if(user.getUsername().equals("admin")){
-				if(adminLogic.check(user.getUsername(), user.getPassword())){
+				if(adminLogic.check(user.getUsername(),user.getPassword())){
 					Admin admin= adminLogic.search(user.getUsername());
-					model.addAttribute("admin",admin);
+					model.addAttribute("adminSession",admin);
 					return"/Admin/adminSignIn";
 				}
 				else{

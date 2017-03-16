@@ -4,46 +4,56 @@ import java.util.Date;
 
 public class Result {
 	 private String username;
-     private int subjectId;
+     private int subject_Id;
      private int result;
-     private Date date;
+     private Date time_;
      
+	public Result(String username, int subject_Id, int result, Date time_) {
+		super();
+		this.username = username;
+		this.subject_Id = subject_Id;
+		this.result = result;
+		this.time_ = time_;
+	}
+
 	public String getUsername() {
 		return username;
 	}
-	
-	public Result(String username, int subjectId, int result, Date date) {
-		super();
-		this.username = username;
-		this.subjectId = subjectId;
-		this.result = result;
-		this.date = date;
-	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getSubject() {
-		return subjectId;
+
+	public int getSubject_Id() {
+		return subject_Id;
 	}
-	public void setSubject(int subject) {
-		this.subjectId = subject;
+
+	public void setSubject_Id(int subject_Id) {
+		this.subject_Id = subject_Id;
 	}
+
 	public int getResult() {
 		return result;
 	}
+
 	public void setResult(int result) {
 		this.result = result;
 	}
-	public Date getDate() {
-		return date;
+
+	public Date getTime_() {
+		return time_;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+
+	public void setTime_(Date time_) {
+		this.time_ = time_;
 	}
+
 	@Override
 	public String toString() {
-		return "SubjectId=" + subjectId + ", Result=" + result + ", Date=" + date + "]";
+		return "Result [username=" + username + ", subject_Id=" + subject_Id + ", result=" + result + ", time_=" + time_
+				+ "]";
 	}
-    
+     
+     
      
 }
