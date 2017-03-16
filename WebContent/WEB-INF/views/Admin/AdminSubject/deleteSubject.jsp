@@ -12,13 +12,13 @@
 <title>ADMIN SUBJECT DELETE</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
 <link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
 </head>
 <body>
 	<div class="form">
 		<div class="tab-group">
-			<form:form action="./adminSubjectDelete" method="post" id="deleteSubject" commandName="subject">
+			<form:form action="./adminSubjectUpdateFinal" method="post"
+				id="subjectUpdate" commandName="subject">
 
 				<div style="color: white;">
 					<table border="1" style="width: 100%;">
@@ -27,15 +27,16 @@
 							<th>Subject Name</th>
 							<th>Examination Start Date</th>
 							<th>Examination End Date</th>
-	<tr>
+
 							<c:forEach var="subjectDisplay" items="${subjectDisplayAll}">
-								<td>${subjectDisplay.subjectId}</td>
-								<td>${subjectDisplay.subject}</td>
-								<td>${subjectDisplay.start}</td>
-								<td>${subjectDisplay.end}</td>
-								<td><form:radiobutton path="subjectId"
-									value="${subjectDisplay.getSubjectId()}"></form:radiobutton></td>
-									<tr>
+								<tr>
+									<td>${subjectDisplay.subjectId}</td>
+									<td>${subjectDisplay.subject}</td>
+									<td>${subjectDisplay.start}</td>
+									<td>${subjectDisplay.end}</td>
+									<td><form:radiobutton path="subjectId"
+											value="${subjectDisplay.getSubjectId()}"></form:radiobutton></td>
+								</tr>
 							</c:forEach>
 						</tr>
 					</table>
@@ -45,7 +46,7 @@
 			</form:form>
 		</div>
 		<br>
-	<c:import url="../adminBack.jsp"/>
+		<c:import url="../adminBack.jsp" />
 	</div>
 
 </body>

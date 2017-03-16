@@ -46,13 +46,11 @@
 					<li style="height: 49px;"></li>
 					<li class="float"><a href="./deleteSubjectAdmin">Delete
 							Subject</a></li>
-					<li class="float"><a href="../SubjectHelper?display1=display1">Display
+					<li class="float"><a href="./displaySubjectAdmin">Display
 							Subject</a></li>
-					<li class="float"><a href="./AdminSubject/insertSubject.jsp">Insert
+					<li class="float"><a href="./insertSubjectAdmin">Insert
 							Subject</a></li>
-					<li class="float"><a href="../SubjectHelper?display3=display3">Search
-							Subject</a></li>
-					<li class="float"><a href="../SubjectHelper?display2=display2">Update
+					<li class="float"><a href="./updateSubjectAdmin">Update
 							Subject</a></li>
 				</ul></li>
 			<li class="tab " id="update"><a>Admin</a>

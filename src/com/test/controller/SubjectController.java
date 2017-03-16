@@ -20,35 +20,35 @@ public class SubjectController extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(true);
-		if (request.getParameter("insert") != null) {
-		
-			SubjectLogic lc=new SubjectLogic(); 
-			String subname=request.getParameter("subjectName");
-			String subdate1=request.getParameter("subjectDate1");
-			String subdate2=request.getParameter("subjectDate2");
-			 
-			try {
-				
-				if(lc.insert(subname,subdate1,subdate2))
-				{
-				 
-					session.setAttribute("mess","Successfully Inserted.");//use this attribute to abstract info
-					response.sendRedirect("./Admin/adminSubject.jsp");
-					 
-				}
-				else	 
-				{
-					session.setAttribute("message","Insertion Failed");
-					session.setAttribute("message1", "");
-					response.sendRedirect("./lost.jsp");
-				}
-			} catch (ClassNotFoundException | SQLException e) {
-				session.setAttribute("message","Invalid Input Format");
-				session.setAttribute("message1","Please Contact The Administrator.");
-				response.sendRedirect("./lost.jsp");
-			}
-		} 
-		else if(request.getParameter("delete") != null)
+//		if (request.getParameter("insert") != null) {
+//		
+//			SubjectLogic lc=new SubjectLogic(); 
+//			String subname=request.getParameter("subjectName");
+//			String subdate1=request.getParameter("subjectDate1");
+//			String subdate2=request.getParameter("subjectDate2");
+//			 
+//			try {
+//				
+//				if(lc.insert(subname,subdate1,subdate2))
+//				{
+//				 
+//					session.setAttribute("mess","Successfully Inserted.");//use this attribute to abstract info
+//					response.sendRedirect("./Admin/adminSubject.jsp");
+//					 
+//				}
+//				else	 
+//				{
+//					session.setAttribute("message","Insertion Failed");
+//					session.setAttribute("message1", "");
+//					response.sendRedirect("./lost.jsp");
+//				}
+//			} catch (ClassNotFoundException | SQLException e) {
+//				session.setAttribute("message","Invalid Input Format");
+//				session.setAttribute("message1","Please Contact The Administrator.");
+//				response.sendRedirect("./lost.jsp");
+//			}
+//		} 
+		 if(request.getParameter("delete") != null)
 		{
 			try {
 			int subid=Integer.parseInt(request.getParameter("subjectId"));

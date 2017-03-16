@@ -12,7 +12,7 @@ import com.test.bean.Subject;
 import com.test.helper.JDBCConnection;
 
 public class SubjectDaoImpl implements SubjectDao {
-	private static final String INSERT_QUERY="INSERT INTO SUBJECT(SUBJECT_ID,SUBJECT_NAME,START_DATE,END_DATE) VALUES(?,?,to_date(?,'yyyy-mm-dd'),to_date(?,'yyyy-mm-dd'))";
+	private static final String INSERT_QUERY="INSERT INTO SUBJECT(SUBJECT_ID,SUBJECT_NAME,START_DATE,END_DATE) VALUES(?,?,to_date(?,'mm-dd-yyyy'),to_date(?,'mm-dd-yyyy'))";
 	private static final String GET_MAX_ID_QUERY = "SELECT COALESCE(MAX(SUBJECT_ID), 0) AS COUNT FROM SUBJECT";
 	private static final String SELECT_QUERY = "SELECT * FROM SUBJECT WHERE SUBJECT_ID = ?";   
 	private static final String SELECT_ALL_QUERY = "SELECT * FROM SUBJECT";
@@ -22,7 +22,7 @@ public class SubjectDaoImpl implements SubjectDao {
 	private String start,end;
 	
 	@Override
-	public boolean insert(String sub,String date1,String date2) throws IOException, ClassNotFoundException, SQLException {
+	public boolean insert(Subject subject) throws IOException, ClassNotFoundException, SQLException {
 		 
 			int numAffectedRows;
 			Connection connection = JDBCConnection.getConnection();
@@ -30,9 +30,9 @@ public class SubjectDaoImpl implements SubjectDao {
 			System.out.println(subjectId);
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY);
 			preparedStatement.setInt(1,subjectId);
-			preparedStatement.setString(2, sub);
-			preparedStatement.setString(3, date1);
-			preparedStatement.setString(4, date2);
+			preparedStatement.setString(2, subject.getSubject());
+			preparedStatement.setString(3, subject.getStart());
+			preparedStatement.setString(4, subject.getEnd());
 			numAffectedRows = preparedStatement.executeUpdate();  
 			//System.out.println(numAffectedRows);
 			preparedStatement.close();
