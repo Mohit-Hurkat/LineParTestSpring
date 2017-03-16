@@ -36,6 +36,9 @@ public Question(int questionId, int subjectId, String question, int answer, Stri
 	default: this.ans=null;
 	}
 }
+public Question() {
+	// TODO Auto-generated constructor stub
+}
 public String getAns() {
 	return ans;
 }

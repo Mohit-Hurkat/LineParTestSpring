@@ -19,27 +19,22 @@ body {
 	color: white;
 	font-size: 20px;
 }
-
 input[type=radio] {
 	height: auto;
 	width: auto;
 	display: inline;
 }
-
 #timer_div {
 	float: left;
 }
-
 .leftRight {
 padding: 0px 400px 0px 300px;
 	font-size: 50px;
 }
-
 a {
 	padding: 0px 40px 0px 40px;
 	float: left
 }
-
 .form {
 	overflow: auto;
 }
@@ -47,15 +42,14 @@ a {
 </head>
 <body>
 	<%
-		ArrayList<Question> ques = (ArrayList<Question>) session.getAttribute("Questions");
 		int que = 0;
 	%>
 
-	<form action="${pageContext.request.contextPath}/Result" id="test"
+	<form action="./ResultSubmit" id="test"
 		method="post">
 		<div class="form">
 			<c:forEach var="questions"
-							items="${Questions}">
+							items="${sessionQuestions}">
 			<div class="question">
 				<ol class="mySlides">
 					<h3>

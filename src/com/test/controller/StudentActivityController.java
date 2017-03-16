@@ -3,28 +3,36 @@ package com.test.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.test.bean.Question;
 import com.test.bean.Result;
 import com.test.bean.Student;
 import com.test.bean.Subject;
+import com.test.bl.QuestionLogic;
+import com.test.bl.ResultLogic;
 import com.test.bl.StudentLogic;
 import com.test.bl.SubjectLogic;
 import com.test.bl.TestLogic;
 
 @Controller
-@SessionAttributes({"studentSession","subjectDisplay","sessionSubjectId"})
+@SessionAttributes({"studentSession","subjectDisplay","sessionSubjectId","sessionQuestions"})
 public class StudentActivityController{
 	private SubjectLogic subjectLogic=new SubjectLogic();
 	private StudentLogic studentLogic=new StudentLogic();
-	private TestLogic lc=new TestLogic(); 
+	private TestLogic lc=new TestLogic();
+	private QuestionLogic questionLogic=new QuestionLogic();
+	private ResultLogic resultLogic=new ResultLogic();
 	
 	@RequestMapping(value="/StudentBack", method = RequestMethod.POST)
 	public String StudentBack(ModelMap model) {
@@ -96,11 +104,41 @@ public class StudentActivityController{
 	@RequestMapping(value="/GiveTestFinal")
 	public String GiveTestFinal(ModelMap model) throws ClassNotFoundException, IOException, SQLException, InterruptedException {
 		Student student=(Student) model.get("studentSession");
+		System.out.println(student+"a1");
 		int subjectId=(int) model.get("sessionSubjectId");
+		System.out.println(subjectId+"b2");
 		List<Question> quest=new ArrayList<>();
 		quest=lc.getQuestions(student.getUsername(), subjectId);
-		model.addAttribute("Questions", quest);
+		model.addAttribute("sessionQuestions", quest);
 		return "./Test/giveTest";
 	}
+	
+	@RequestMapping(value="/ResultSubmit",method = RequestMethod.POST)
+	public String ResultSubmit(ModelMap model,HttpServletRequest request) throws ClassNotFoundException, IOException, SQLException, InterruptedException {
+		Student student=(Student) model.get("studentSession");
+		int subjectId=(int) model.get("sessionSubjectId");
+		Enumeration<String> questions = request.getParameterNames();
+		int count=0;
+		while (questions.hasMoreElements()) {
+			String question = questions.nextElement();
+			int questionId = Integer.parseInt(question);
+			String answer= questionLogic.answer(questionId);
+			System.out.println(answer);
+			System.out.println(request.getParameter(question));
+			if(answer.equals(request.getParameter(question))){
+				count=count+10;
+			}
+		}
+		model.addAttribute("testResult", count);
+		resultLogic.set(student.getUsername(), subjectId, count);
+		Subject subject=subjectLogic.search(subjectId);
+		model.addAttribute("Subject", subject);
+//		List<Question> ques= (List<Question>) model.get("sessionQuestions");
+//		System.out.println(ques);
+//		question=(List<Question>) model.get("question");
+//		System.out.println(question+"hell");
+		return "./Student/printBack";
+	}
+	
 	
 }

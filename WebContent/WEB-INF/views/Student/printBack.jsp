@@ -12,10 +12,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style1.css" />
-<script src="${pageContext.request.contextPath}/javascript/pdf.js"
-	type="text/javascript"></script>
+<link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
+<script src="<c:url value='/static/javascript/pdf.js'/>" type="text/javascript"></script>
 <style>
 #pdf {
 	text-align: centre;
@@ -23,29 +21,18 @@
 </style>
 </head>
 <body>
-	<c:if test="${empty sessionScope.student}">
-		<c:redirect url="/home.jsp" />
-	</c:if>
-	<%
-		String result = (String) session.getAttribute("message1");
-		String username = (String) session.getAttribute("sessionUsername");
-	%>
 	<div class="form">
 		<div class="tab-group">
-			<form action="${pageContext.request.contextPath}/TestController"
-				method="post">
 				<h1>Test Completed</h1>
 				<div id="content" style="color: white;">
-
 					<h2>
-						Username:
-						<%=username%></h2>
-					<h1>
-						Result:
-						<%=result%></h1>
+						Username:${sessionStudent.username }</h2>
+											<h2>
+						Subject:${Subject.subject}</h2>
+					<h2>
+						Result: ${testResult} %</h2>
 				</div>
 				<br>
-			</form>
 		</div>
 		<div id="editor"></div>
 		<input type="button" onclick="javascript:demoFromHTML();"
