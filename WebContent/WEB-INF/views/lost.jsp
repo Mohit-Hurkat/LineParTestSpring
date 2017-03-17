@@ -21,7 +21,7 @@
     <title>Typed.js - Type your heart out</title>
     <!-- Get jQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="javascript/typed.js" type="text/javascript"></script>
+	<script src="<c:url value='/static/javascript/typed.js'/>" type="text/javascript"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
     <script>

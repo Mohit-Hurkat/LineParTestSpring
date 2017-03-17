@@ -108,7 +108,7 @@
 					</div>
 
 					<p class="forgot">
-						<a href="./lost.jsp"><spring:message code="label.forgetPass"></spring:message></a>
+						<a href="./Lost"><spring:message code="label.forgetPass"></spring:message></a>
 					</p>
 
 					<button class="button button-block" name="login"><spring:message code="label.login"></spring:message></button>
@@ -117,7 +117,7 @@
 			<!-- login -->
 		</div>
 		<!-- tab-content -->
-
+	<h5 style="text-align:center;"><a href="?lang=en">English</a>|<a href="?lang=de">German</a></h5>
 	</div>
 	<!-- /form -->
 </body>

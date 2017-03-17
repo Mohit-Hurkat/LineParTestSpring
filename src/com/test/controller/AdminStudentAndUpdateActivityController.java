@@ -36,7 +36,7 @@ public class AdminStudentAndUpdateActivityController {
 		return "lost";
 	}
 	
-	@RequestMapping(value = "/adminStudentDelete")
+	@RequestMapping(value = "/viewStudentAdmin")
 	public String AdminQuestionDisplay(ModelMap model,Student student) throws ClassNotFoundException, IOException, SQLException {
 		List<Student> studentDisplay = studentLogic.displayAll();
 		model.addAttribute("studentDisplayAll", studentDisplay);

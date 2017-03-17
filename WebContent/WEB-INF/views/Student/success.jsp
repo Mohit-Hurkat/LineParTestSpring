@@ -14,9 +14,7 @@
 			<h1 id="construct" style="font-family: samarkan;">NAMASTE</h1><br>
 			<h1>Successfully sign up</h1>
 			<br>
- 			<form action="${pageContext.request.contextPath}/home.jsp" method="post">
- 				<input type="submit" class="button-block" value="Back">
- 			</form>
+	<c:import url="../logout.jsp"/>
 		</div>
 	</div>
 </body>
