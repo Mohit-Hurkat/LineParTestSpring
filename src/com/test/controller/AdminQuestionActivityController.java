@@ -68,7 +68,9 @@ public class AdminQuestionActivityController{
 				return "./Admin/AdminQuestion/insertQuestion";
 			}
 			else if(questionhelper.equals("delete")){
-				
+				List<Question> questionDisplay = questionLogic.displayAll(subject.getSubjectId());
+				model.addAttribute("questionDisplayAll", questionDisplay);
+				return "./Admin/AdminQuestion/deleteQuestion";
 			}
 			else if(questionhelper.equals("display")){
 				List<Question> questionDisplay = questionLogic.displayAll(subject.getSubjectId());
@@ -76,7 +78,9 @@ public class AdminQuestionActivityController{
 				return "./Admin/AdminQuestion/displayQuestion";
 			}
 			else if(questionhelper.equals("update")){
-				
+				List<Question> questionDisplay = questionLogic.displayAll(subject.getSubjectId());
+				model.addAttribute("questionDisplayAll", questionDisplay);
+				return "./Admin/AdminQuestion/updateQuestion";
 			}
 			return null;
 		}
@@ -95,8 +99,6 @@ public class AdminQuestionActivityController{
 			case 4:question.setAns(question.getChoice4());
 			break;
 			}
-			System.out.println(question.getAns());
-			System.out.println(question.getAnswer());
 			if(question.getAnswer()>4||question.getAnswer()<1){
 				return "lost";
 			}
@@ -106,4 +108,45 @@ public class AdminQuestionActivityController{
 			}
 			return "lost";
 	}
+		
+		@RequestMapping(value = "/adminQuestionDelete")
+		public String AdminQuestionDelete(ModelMap model,Question question) throws ClassNotFoundException, IOException, SQLException {
+			if (questionLogic.delete(question.getQuestionId())) {
+				model.addAttribute("mess", "Successfully Deleted.");
+				return "./Admin/adminSubject";
+			} else {
+				return "lost";
+			}
+		}
+		
+		@RequestMapping(value = "/adminQuestionUpdate")
+		public String AdminQuestionUpdate(ModelMap model,Question question) throws ClassNotFoundException, IOException, SQLException {
+			question=questionLogic.search(question.getQuestionId());
+			model.addAttribute("question",question);
+			return null;
+		}
+		
+		@RequestMapping(value = "/adminQuestionUpdateFinal")
+		public String AdminQuestionUpdateFinal(ModelMap model,Question question) throws ClassNotFoundException, IOException, SQLException {
+			switch(question.getAnswer()){
+			case 1:question.setAns(question.getChoice1());
+			break;
+			case 2:question.setAns(question.getChoice2());
+			break;
+			case 3:question.setAns(question.getChoice3());
+			break;
+			case 4:question.setAns(question.getChoice4());
+			break;
+			}
+			if(question.getAnswer()>4||question.getAnswer()<1){
+				return "lost";
+			}
+			if (questionLogic.update(question.getQuestionId(), question)) {
+				model.addAttribute("mess", "Successfully Updated.");
+				return "./Admin/adminSubject";
+			} else {
+				return "lost";
+			}
+		}
+		
 }

@@ -11,10 +11,8 @@
     <script src="../javascript/homepage.js" type="text/javascript"></script>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if>
 <div class="form">
 	<div class="tab-group"> 
- 		<h1>Successfully Deleted.</h1>
  		<br>
 			<form action="${pageContext.request.contextPath}/Admin/adminSignIn.jsp" method="post" name="backForm">
  			<input type="submit" class="button-block" value="Back">

@@ -13,6 +13,16 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	var $submit = $("#sub").hide();
+    	var $submit1 = $("#dis").show();
+    	var    $cbs = $("input[type='radio']").click(function() {
+            $submit.toggle( $cbs.is(":checked") );
+            $submit1.hide();
+        });
+       });
+</script>
 </head>
 <body>
 	<div class="form">
@@ -42,7 +52,10 @@
 					</table>
 				</div>
 				<br>
-				<button type="submit" class="button button-block" name="delete">Delete</button>
+<div id="dis">
+ <h1>Please Select a Subject to delete</h1>
+ </div>
+<button type="submit" class="button button-block" id="sub" name="delete">Delete</button>
 			</form:form>
 		</div>
 		<br>

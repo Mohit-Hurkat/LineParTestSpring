@@ -33,12 +33,9 @@
 			<li class="tab" id="updateInfo"><a>Student</a>
 				<ul class="dropdown-content">
 					<li style="height: 49px;"></li>
+					<li class="float"><a href="./deleteStudentAdmin">Delete Student</a></li>
 					<li class="float"><a
-						href="../AdminStudentHelper?display=display">Delete Student</a></li>
-					<li class="float"><a
-						href="../AdminStudentHelper?search=search">Search Student</a></li>
-					<li class="float"><a
-						href="../AdminStudentHelper?displayAll=displayAll">View All
+						href="./viewStudentAdmin">View All
 							Students</a></li>
 				</ul></li>
 			<li class="tab " id="subject"><a>Subject</a>

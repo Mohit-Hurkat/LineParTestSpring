@@ -36,6 +36,7 @@
 <button type="submit" class="button button-block" name="insert">Insert</button>
  </form:form>
   </div>
+  <c:import url="../adminBack.jsp" />
 </div>
 </body>
 </html>
