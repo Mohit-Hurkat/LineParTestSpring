@@ -15,7 +15,7 @@ import com.test.bl.SubjectLogic;
 
 @Controller
 @SessionAttributes({ "subjectIdSession" })
-public class AdminSubjectController {
+public class AdminSubjectActivityController {
 	private SubjectLogic subjectLogic = new SubjectLogic();
 
 	private Subject subject = new Subject();

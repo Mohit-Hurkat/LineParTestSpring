@@ -22,7 +22,7 @@ import com.test.bl.StudentLogic;
 @Controller
 @RequestMapping("/")
 @SessionAttributes({"studentSession","adminSession"})
-public class LoginContoller {
+public class LoginActivityContoller {
 	private AdminLogic adminLogic = new AdminLogic();
 	private StudentLogic studentLogic = new StudentLogic();
 	

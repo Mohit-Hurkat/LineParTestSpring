@@ -21,14 +21,14 @@
 				<ul class="dropdown-content">
 					<li style="height: 49px;"></li>
 
-					<li class="float"><a href="../AdminQuestion/?delete=delete">
+					<li class="float"><a href="./deleteQuestionAdmin">
 							Delete Question</a></li>
-					<li class="float"><a href="../AdminQuestion/?insert=insert">Insert
+					<li class="float"><a href="./insertQuestionAdmin">Insert
 							Question</a></li>
-					<li class="float"><a href="../AdminQuestion/?update=update">Update
+					<li class="float"><a href="./updateQuestionAdmin">Update
 							Question</a></li>
-					<li class="float"><a href="../AdminQuestion/?viewAll=viewAll">
-							View All Questions</a></li>
+					<li class="float"><a href="./displayQuestionAdmin">
+							View Questions</a></li>
 				</ul></li>
 			<li class="tab" id="updateInfo"><a>Student</a>
 				<ul class="dropdown-content">
