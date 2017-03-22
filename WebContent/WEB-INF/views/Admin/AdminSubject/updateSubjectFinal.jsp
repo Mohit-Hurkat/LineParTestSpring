@@ -37,14 +37,14 @@
 			<form:label class="active" path="start">
            Start Date (mm-dd-yyyy)<span class="req">*</span>
             </form:label>
-            <form:input path="start" value="${subjectUpdate.start}"></form:input>
+            <form:input path="start" type="date" value="${subjectUpdate.start}"></form:input>
           	</div>
           
             <div class="field-wrap" class="active" >
 	        <form:label class="active" path="end">
            	End State(mm-dd-yyyy)<span class="req">*</span>
              </form:label>
-            <form:input path="end" value="${subjectUpdate.end}"></form:input>
+            <form:input path="end" type="date" value="${subjectUpdate.end}"></form:input>
             </div>    
           <button type="submit" class="button button-block" name="update">Update</button>
           </div><!-- top-row -->

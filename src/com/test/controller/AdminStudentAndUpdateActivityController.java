@@ -33,7 +33,10 @@ public class AdminStudentAndUpdateActivityController {
 			model.addAttribute("mess", "Successfully Deleted.");
 			return "./Admin/adminSubject";
 		}
-		return "lost";
+		else{
+			model.addAttribute("mess", "Deletion Unsuccessful");
+			return "./Admin/adminSubject";
+		}
 	}
 	
 	@RequestMapping(value = "/viewStudentAdmin")

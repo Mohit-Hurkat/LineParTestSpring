@@ -90,7 +90,7 @@ public class LoginActivityContoller {
 				}
 			} else {
 				Student student=studentLogic.search(user.getUsername());
-				if(!student.equals(null)){
+				if(student!=null){
 				if (studentLogic.check(user.getUsername(), user.getPassword())) {
 					student = studentLogic.search(user.getUsername());
 					model.addAttribute("studentSession", student);

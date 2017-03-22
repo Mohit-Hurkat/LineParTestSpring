@@ -27,7 +27,7 @@
 <body>
 	<div class="form">
 		<div class="tab-group">
-			<form:form action="./adminSubjectUpdateFinal" method="post"
+			<form:form action="./adminSubjectDelete" method="post"
 				id="subjectUpdate" commandName="subject">
 
 				<div style="color: white;">

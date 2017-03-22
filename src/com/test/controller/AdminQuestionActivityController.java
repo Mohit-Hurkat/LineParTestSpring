@@ -140,13 +140,16 @@ public class AdminQuestionActivityController{
 			break;
 			}
 			if(question.getAnswer()>4||question.getAnswer()<1){
+				model.addAttribute("message", "Invalid Input");
+				model.addAttribute("message", "Hey Admin,We Dont Expect This From You ");
 				return "lost";
 			}
 			if (questionLogic.update(question.getQuestionId(), question)) {
 				model.addAttribute("mess", "Successfully Updated.");
 				return "./Admin/adminSubject";
 			} else {
-				return "lost";
+				model.addAttribute("mess", "Updation Unsuccessful.");
+				return "./Admin/adminSubject";
 			}
 		}
 		

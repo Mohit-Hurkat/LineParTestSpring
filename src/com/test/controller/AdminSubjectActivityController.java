@@ -32,13 +32,13 @@ public class AdminSubjectActivityController {
 	public String DeleteSubjectFinal(ModelMap model, Subject subject)
 			throws ClassNotFoundException, IOException, SQLException {
 		int subjectId = subject.getSubjectId();
-		System.out.println(subjectId);
 		if (subjectLogic.delete(subjectId)) {
 			model.addAttribute("mess", "Successfully Deleted.");
 			return "./Admin/adminSubject";
-		} else {
-			return "lost";
-		}
+		} else{
+			model.addAttribute("mess", "Deletion Unsuccessful.");
+			return "./Admin/adminSubject";
+			}
 	}
 
 	@RequestMapping(value = "/displaySubjectAdmin")
@@ -61,7 +61,8 @@ public class AdminSubjectActivityController {
 			model.addAttribute("mess", "Successfully Inserted.");
 			return "./Admin/adminSubject";
 		} else {
-			return "lost";
+			model.addAttribute("mess", "Insertion Unsuccessful.");
+			return "./Admin/adminSubject";
 		}
 	}
 
@@ -91,7 +92,8 @@ public class AdminSubjectActivityController {
 			model.addAttribute("mess", "Successfully Updated.");
 			return "./Admin/adminSubject";
 		} else {
-			return "lost";
+			model.addAttribute("mess", "Updation Unsuccessful.");
+			return "./Admin/adminSubject";
 		}
 	}
 	

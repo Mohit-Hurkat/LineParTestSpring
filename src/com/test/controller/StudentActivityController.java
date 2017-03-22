@@ -52,31 +52,43 @@ public class StudentActivityController{
 			model.addAttribute("studentMessage", "Successfully Updated.");
 			return "./Student/updateStudent";
 		}
-		return "./Student/student";
+		else{
+			model.addAttribute("studentMessage", "Update Unsuccessful");
+			return "./Student/updateStudent";
+		}
 		
 	}
 	
 	@RequestMapping(value="/studentResult", method = RequestMethod.POST)
 	public String PrevResult(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
 		List<Subject> subjectDisplay=subjectLogic.displayAll();
-		if(subjectDisplay!=null){
+		List<Subject> match=new ArrayList<>();
+		if(!subjectDisplay.equals(match)){
 			model.addAttribute("subjectDisplay",subjectDisplay);
 			return "./Student/studentGiveTest";
 		}
-		return "./Student/student";
+		else{
+		model.addAttribute("message", "No Subject");
+		model.addAttribute("message1", "Sorry about that.");
+		return "lost";
+		}
 	}
 	
 	@RequestMapping(value="/studentTest")
 	public String GiveTest(ModelMap model) throws ClassNotFoundException, IOException, SQLException {
 		List<Subject> subjectDisplay=subjectLogic.displayAll();
-		List<Subject> sub=new ArrayList<>();
-		if(!subjectDisplay.equals(sub)){
+		List<Subject> match=new ArrayList<>();
+		if(!subjectDisplay.equals(match)){
 			model.addAttribute("subjectDisplay",subjectDisplay);
 			Subject subject=new Subject();
 			model.addAttribute("subject", subject);
 			return "./Student/studentGiveTest";
 		}
-		return "./Student/student";
+		else{
+			model.addAttribute("message", "No Subject");
+			model.addAttribute("message1", "Sorry about that.");
+			return "lost";
+			}
 	}
 	
 	@RequestMapping(value="/testSubject")
@@ -85,17 +97,26 @@ public class StudentActivityController{
 		Student student=(Student) model.get("studentSession");
 		List<Result> result=new ArrayList<>();
 		if(lc.giveTest(student.getUsername(), subject.getSubjectId()).equals(result) ){
-			{
 				if(lc.check_questions(subject.getSubjectId(),student.getUsername()))
 				{
 					if(lc.dateCheck(subject.getSubjectId())){
 						model.addAttribute("sessionSubjectId",subject.getSubjectId());
 						return "./Test/Rules";
+					}else{
+						model.addAttribute("message", "Test Not Within The Date Period");
+						model.addAttribute("message1", "Please Check The Date.");
+						return "lost";
+						}
+				}else{
+					model.addAttribute("message", "Questions are being Updated.");
+					model.addAttribute("message1", "Select Another Subject");
+					return "lost";
 					}
+			}else{
+				model.addAttribute("message", "Test Already Given");
+				model.addAttribute("message1", "Select Another Subject");
+				return "lost";
 				}
-			}
-		}
-		return "./lost";
 	}
 	
 	
@@ -147,7 +168,11 @@ public class StudentActivityController{
 			model.addAttribute("resultList", resultList);
 			return "./Student/studentPrevResult";
 		}
-		return null;
-	}
+		else{
+			model.addAttribute("message", "No Test Given");
+			model.addAttribute("message1", "Hence No Result");
+			return "lost";
+			}
+		}
 	
 }

@@ -9,6 +9,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="<c:url value='/static/javascript/typed.js'/>" type="text/javascript"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
     <script>
     $(document).ready(function() {
@@ -105,13 +106,18 @@
 
 <c:if test="${empty sessionScope.adminSession}">
 <c:if test="${empty sessionScope.studentSession}">
-<a href="<c:url value="/"/>" style="font-size: 25px;">Go Back</a><br>
+<a href="<c:url value="./"/>" style="font-size: 25px;">Go Back</a><br>
 </c:if>
 </c:if>
 
 <br><br>
 <a href="https://www.hurkat.in">Mohit Hurkat</a><br><br>
- <a href="https://www.linkedin.com/in/mohithurkat/">Linkedin</a> | <a href="https://www.facebook.com/mohit.hurkat">Facebook</a> | <a href="https://twitter.com/mohithurkat">Twitter</a> | <a href="https://www.instagram.com/bhatakti_aatma/">Instagram</a> | <a href="https://github.com/Mohit-Hurkat/">GitHub</a>
+     <a href="https://www.facebook.com/mohit.hurkat"  class="fa fa-facebook-f" style="font-size:48px;color:rgb(51, 112, 201); padding-right:20px;"></a>
+     <a href="https://www.linkedin.com/in/mohithurkat"  class="fa fa-linkedin-square" style="font-size:48px;color:#30b4b9;  padding-right:20px;"></a>
+     <a href="https://twitter.com/mohithurkat"  class="fa fa-twitter" style="font-size:48px;color:#00eaff; padding-right:20px;"></a>
+     <a href="https://www.instagram.com/bhatakti_aatma"  class="fa fa-instagram" style="font-size:48px;color:white;  padding-right:20px;"></a>
+     <a href="https://github.com/Mohit-Hurkat"  class="fa fa-github" style="font-size:48px;color:black;  padding-right:20px;"></a>
+     
         </div>
     </div>
 </div>

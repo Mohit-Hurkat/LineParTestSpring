@@ -54,14 +54,14 @@ $('.tab a').on('click', function (e) {
 			<form:label class="active" path="start">
            Start Date (mm-dd-yyyy)<span class="req">*</span>
             </form:label>
-            <form:input path="start" ></form:input>
+            <form:input path="start" type="date"></form:input>
           	</div>
           
             <div class="field-wrap">
 	        <form:label class="active" path="end">
            	End State(mm-dd-yyyy)<span class="req">*</span>
              </form:label>
-            <form:input path="end"></form:input>
+            <form:input path="end" type="date"></form:input>
             </div>
 
           <button type="submit" class="button button-block" name="insert"/>Insert</button>

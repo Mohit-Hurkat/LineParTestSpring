@@ -12,7 +12,7 @@ import com.test.bean.Subject;
 import com.test.helper.JDBCConnection;
 
 public class SubjectDaoImpl implements SubjectDao {
-	private static final String INSERT_QUERY="INSERT INTO SUBJECT(SUBJECT_ID,SUBJECT_NAME,START_DATE,END_DATE) VALUES(?,?,to_date(?,'mm-dd-yyyy'),to_date(?,'mm-dd-yyyy'))";
+	private static final String INSERT_QUERY="INSERT INTO SUBJECT(SUBJECT_ID,SUBJECT_NAME,START_DATE,END_DATE) VALUES(?,?,to_date(?,'yyyy-mm-dd'),to_date(?,'yyyy-mm-dd'))";
 	private static final String GET_MAX_ID_QUERY = "SELECT COALESCE(MAX(SUBJECT_ID), 0) AS COUNT FROM SUBJECT";
 	private static final String SELECT_QUERY = "SELECT * FROM SUBJECT WHERE SUBJECT_ID = ?";   
 	private static final String SELECT_ALL_QUERY = "SELECT * FROM SUBJECT";
