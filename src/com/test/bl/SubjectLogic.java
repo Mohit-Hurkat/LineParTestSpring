@@ -31,5 +31,9 @@ public class SubjectLogic {
 	public List<Subject> showSubject(String username) throws IOException, ClassNotFoundException, SQLException{
 		return subjectDao.showSubject(username);
 	}
+	
+	public List<Subject> displayAnalysis() throws IOException, ClassNotFoundException, SQLException{
+		return subjectDao.displayAnalysis();
+	}
 }
  

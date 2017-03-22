@@ -18,6 +18,7 @@ import com.test.bean.Question;
 import com.test.bean.Result;
 import com.test.bean.Student;
 import com.test.bean.Subject;
+import com.test.bl.QuestionAnalyticsLogic;
 import com.test.bl.QuestionLogic;
 import com.test.bl.ResultLogic;
 import com.test.bl.StudentLogic;
@@ -32,6 +33,7 @@ public class StudentActivityController{
 	private TestLogic lc=new TestLogic();
 	private QuestionLogic questionLogic=new QuestionLogic();
 	private ResultLogic resultLogic=new ResultLogic();
+	private QuestionAnalyticsLogic quesAnalyticsLogic=new QuestionAnalyticsLogic();
 	
 	
 	@RequestMapping(value="/studentUpdate")
@@ -123,6 +125,10 @@ public class StudentActivityController{
 			System.out.println(request.getParameter(question));
 			if(answer.equals(request.getParameter(question))){
 				count=count+10;
+				quesAnalyticsLogic.test(questionId);
+			}
+			else{
+				quesAnalyticsLogic.testBad(questionId);
 			}
 		}
 		model.addAttribute("testResult", count);

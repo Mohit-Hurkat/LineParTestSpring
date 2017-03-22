@@ -44,6 +44,4 @@ public class AdminStudentAndUpdateActivityController {
 		return "./Admin/AdminStudent/viewAllStudents";
 	}
 	
-	
-
 }

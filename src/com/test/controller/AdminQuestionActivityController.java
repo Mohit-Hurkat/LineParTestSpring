@@ -115,7 +115,8 @@ public class AdminQuestionActivityController{
 				model.addAttribute("mess", "Successfully Deleted.");
 				return "./Admin/adminSubject";
 			} else {
-				return "lost";
+				model.addAttribute("mess", "Deletion Unsuccessful");
+				return "./Admin/adminSubject";
 			}
 		}
 		
@@ -123,7 +124,7 @@ public class AdminQuestionActivityController{
 		public String AdminQuestionUpdate(ModelMap model,Question question) throws ClassNotFoundException, IOException, SQLException {
 			question=questionLogic.search(question.getQuestionId());
 			model.addAttribute("question",question);
-			return null;
+			return "./Admin/AdminQuestion/finalUpdate";
 		}
 		
 		@RequestMapping(value = "/adminQuestionUpdateFinal")

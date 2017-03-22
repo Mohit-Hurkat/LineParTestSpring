@@ -15,6 +15,7 @@
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<ul class="tab-group">
 			<li class="tab " id="question"><a>Question</a>
@@ -53,8 +54,7 @@
 			<li class="tab " id="update"><a>Admin</a>
 				<ul class="dropdown-content">
 					<li style="height: 49px;"></li>
-					<li class="float"><a href="../Admin/AdminAdmin/adminAdmin.jsp">Update
-							Admin</a></li>
+					<li class="float"><a href="./SubjectSelect">Analytics</a></li>
 				</ul></li>
 		</ul>
 	</div>

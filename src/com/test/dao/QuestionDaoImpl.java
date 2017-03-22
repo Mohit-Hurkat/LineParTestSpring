@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.test.bean.Question;
+import com.test.bean.QuestionAnalytics;
+import com.test.bl.QuestionAnalyticsLogic;
 import com.test.helper.JDBCConnection;
 
 public class QuestionDaoImpl implements QuestionDao{
@@ -28,7 +30,9 @@ public class QuestionDaoImpl implements QuestionDao{
     private String choice_3;
     private String choice_4;
     private int ans2;
+    private int analytics=0;
     private String ans1;
+    private QuestionAnalyticsLogic quesAnalyticsLogic=new QuestionAnalyticsLogic();
     
     @Override
 	public boolean insert(Question question) throws IOException, ClassNotFoundException, SQLException{
@@ -46,6 +50,8 @@ public class QuestionDaoImpl implements QuestionDao{
 		preparedStatement.setInt(8, question.getAnswer());
 		preparedStatement.setString(9, question.getAns());
 		numAffectedRows = preparedStatement.executeUpdate();
+		QuestionAnalytics quesAnalytics= new QuestionAnalytics(questionId,  question.getSubjectId(), question.getQuestion(), question.getAns(), analytics);
+		quesAnalyticsLogic.insert(quesAnalytics);
 		preparedStatement.close();
 		connection.close();
 		return numAffectedRows > 0;

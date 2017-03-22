@@ -14,5 +14,6 @@ public interface SubjectDao {
 	boolean insert(Subject subject) throws IOException, ClassNotFoundException, SQLException;
 	String subname(int subjectId) throws IOException, ClassNotFoundException, SQLException;
 	List<Subject> showSubject(String username) throws IOException, ClassNotFoundException, SQLException;
+	List<Subject> displayAnalysis() throws IOException, ClassNotFoundException, SQLException;
 	 
 }

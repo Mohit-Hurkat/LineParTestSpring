@@ -19,6 +19,7 @@ public class SubjectDaoImpl implements SubjectDao {
 	private static final String UPDATE_QUERY = "UPDATE SUBJECT SET SUBJECT_NAME = ? ,START_DATE = to_date(?,'yyyy-mm-dd'),END_DATE = to_date(?,'yyyy-mm-dd') WHERE SUBJECT_ID = ?";
 	private static final String DELETE_QUERY = "DELETE FROM SUBJECT WHERE SUBJECT_ID = ?";
 	private static final String SELECT_RESULT = "SELECT SUBJECT_ID,SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_ID IN (SELECT SUBJECT_ID FROM RESULT WHERE USERNAME = ?)";
+	private static final String SELECT_Analysis = "select * from SUBJECT where subject_id in (select subject_id From (select Count(question_Id) as count,subject_id from questions group by subject_id) where count>10)";
 	private String start,end;
 	
 	@Override
@@ -163,7 +164,27 @@ public class SubjectDaoImpl implements SubjectDao {
 		return subjectList;
 	}
 
-	
+	@Override
+	public List<Subject> displayAnalysis() throws IOException, ClassNotFoundException, SQLException {
+		List<Subject> subjectList = new ArrayList<>();
+		Connection connection = JDBCConnection.getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_Analysis);
+		ResultSet rs = preparedStatement.executeQuery();
+		while(rs.next()){
+			int subjectId = rs.getInt("SUBJECT_ID");
+			String subjectName = rs.getString("SUBJECT_NAME");
+			start = rs.getString("START_DATE");
+			start=start.substring(0, 10);
+			end = rs.getString("END_DATE");
+			end=end.substring(0, 10);
+			Subject subOb = new Subject(subjectId, subjectName,start,end);
+			subjectList.add(subOb);
+		}
+		rs.close();
+		preparedStatement.close();
+		connection.close();
+		return subjectList;
+	}
 	
 
 }

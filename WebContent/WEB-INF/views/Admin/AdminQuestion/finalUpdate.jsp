@@ -11,8 +11,7 @@
 <title>ADMIN QUESTION UPDATE</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style1.css" />
+<link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
 </head>
 <body>
 	<div class="form">

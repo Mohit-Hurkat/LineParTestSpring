@@ -94,4 +94,13 @@ public class AdminSubjectActivityController {
 			return "lost";
 		}
 	}
+	
+	
+	@RequestMapping(value = "/SubjectSelect")
+	public String AdminAnalytics(ModelMap model,Subject subject) throws ClassNotFoundException, IOException, SQLException {
+		List<Subject> subjectDisplay = subjectLogic.displayAnalysis();
+		model.addAttribute("subjectDisplayAll", subjectDisplay);
+		model.addAttribute("subject", subject);
+		return "./Admin/AdminAdmin/selectSubject";
+	}
 }

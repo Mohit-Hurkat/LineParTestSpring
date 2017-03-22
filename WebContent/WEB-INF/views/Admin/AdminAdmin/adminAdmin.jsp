@@ -53,9 +53,8 @@ function Validation() {
 
 </form><br>
 
- <form action="${pageContext.request.contextPath}/Admin/adminSignIn.jsp" method="post">
- <input type="submit" class="button-block" value="Back">
-           </div><!-- top-row -->
- </form>
+		<c:import url="../adminBack.jsp" />
+
+</div>
 </body>
 </html>

@@ -6,27 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>FINAL</title>
-    <% String message=(String)session.getAttribute("message");
-    String message1=(String)session.getAttribute("message1"); 
-    if(message==null){
-    	message="Oops! It looks like you're lost. ";
-    }
-
-    if(message1==null){
-    	message1="Sorry about that.";
-    }
-    %>
-<head>
-    <meta charset="UTF-8">
-    <title>Typed.js - Type your heart out</title>
-    <!-- Get jQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="<c:url value='/static/javascript/typed.js'/>" type="text/javascript"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     	<link href="<c:url value='/static/css/stylemy.css' />" rel="stylesheet"></link>
     <script>
     $(document).ready(function() {
-    	responsiveVoice.speak("<%=message%>"+"<%=message1%>"+"Let me try and help."+"Click On The Below Links for Navigations.", "UK English Male",{rate:1});
+    	responsiveVoice.speak("${message}"+"${message1}"+"Let me try and help."+"Click On The Below Links for Navigations.", "UK English Male",{rate:1});
     	
         $("#typed").typed({
             stringsElement: $('#typed-strings'),
@@ -93,15 +79,15 @@
         }
     </style>
 </head>
-<body>
+<body style="color:#000;">
 <div class="form">
     <div class="wrap">
         <h1 id="construct" style="font-family: samarkan;">NAMASTE</h1>
 
         <div class="type-wrap">
             <div id="typed-strings">
-                <span><%=message%></span>
-                <p><%=message1%></p>
+                <span>${message}</span>
+                <p>${message1}</p>
                 <p>Let me try and help. </p>
 				<p>Click On The Below Links for Navigations. </p>
             </div>
@@ -109,23 +95,23 @@
         </div>
 
         <div class="links">
-<c:if test="${not empty sessionScope.student}">
-<a href="<c:url value="./Student/student.jsp"/>" style="font-size: 25px;">Go Back</a><br>
+<c:if test="${not empty sessionScope.studentSession}">
+<a href="<c:url value="./student"/>" style="font-size: 25px;">Go Back</a><br>
 </c:if>
 
-<c:if test="${not empty sessionScope.admin}">
-<a href="<c:url value="./Admin/adminSignIn.jsp"/>" style="font-size: 25px;">Go Back</a><br>
+<c:if test="${not empty sessionScope.adminSession}">
+<a href="<c:url value="./admin"/>" style="font-size: 25px;">Go Back</a><br>
 </c:if>
 
-<c:if test="${empty sessionScope.admin}">
-<c:if test="${empty sessionScope.student}">
+<c:if test="${empty sessionScope.adminSession}">
+<c:if test="${empty sessionScope.studentSession}">
 <a href="<c:url value="/"/>" style="font-size: 25px;">Go Back</a><br>
 </c:if>
 </c:if>
 
 <br><br>
-<a href="https://www.hurkat.in">Contact Administrator</a><br><br>
-<a href="https://www.facebook.com/mohit.hurkat">Mohit Hurkat</a> | <a href="https://www.facebook.com/profile.php?id=100003573744425">Manish Kumar</a> | <a href="https://www.facebook.com/priyank.mahajan.35">Priyank Mahajan</a> | <a href="https://www.facebook.com/shikhar.bajaj">Shikhar Bajaj</a> | <a href="https://www.facebook.com/supriya.malla.35">Supriya Malla</a>
+<a href="https://www.hurkat.in">Mohit Hurkat</a><br><br>
+ <a href="https://www.linkedin.com/in/mohithurkat/">Linkedin</a> | <a href="https://www.facebook.com/mohit.hurkat">Facebook</a> | <a href="https://twitter.com/mohithurkat">Twitter</a> | <a href="https://www.instagram.com/bhatakti_aatma/">Instagram</a> | <a href="https://github.com/Mohit-Hurkat/">GitHub</a>
         </div>
     </div>
 </div>
