@@ -14,16 +14,18 @@ color:white;
 </style>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 <div class="form" style="margin: 40px 300px 40px 300px;text-align: center;">
     <div class="wrap">
   <form action="./GiveTestFinal" >
 <p>------------Don't Press Anything Until The Test Starts------------</p>
 		<p>-------------------INSTRUCTIONS FOR ONLINE EXAM-------------------</p>
 		<p>You will be given only 300 seconds to attempt every question</p>
+		<p>There will be 10 Questions.</p>
 		<p>You can skip a question</p>
 		<p>Every question has 4 options out of which only one is correct</p>
 		<p>You can't attempt the same test twice</p>
-		<p>Once answered you can't change your answer</p>
+		<p>Once Submitted you can't change your answers</p>
 		<p>Each question is of one mark</p>
 		<p>Your result will be displayed as per the number of correct questions you have answered in percentage</p>
  		<input type="submit" class="button-block" value="Start">

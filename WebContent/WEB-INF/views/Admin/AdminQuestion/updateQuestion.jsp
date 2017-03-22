@@ -24,6 +24,7 @@
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <div class="form"> 
       <div class="tab-content">
 <h1>Select Questions To be Deleted</h1>

@@ -12,7 +12,7 @@
 <%String mess=(String)session.getAttribute("message");%>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if> 
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <div class="form"> 
       <div class="tab-content">
 <h1><%=mess%></h1>

@@ -41,20 +41,17 @@ a {
 </style>
 </head>
 <body>
-	<%
-		int que = 0;
-	%>
-
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 	<form action="./ResultSubmit" id="test"
 		method="post">
 		<div class="form">
 			<c:forEach var="questions"
-							items="${sessionQuestions}">
+							items="${sessionQuestions}" varStatus="Thiscount">
 			<div class="question">
 				<ol class="mySlides">
 					<h3>
 						QuestionNo:
-						<%=++que%></h3>
+						${Thiscount.count}</h3>
 					<h3>${questions.question}</h3>
 					<li><input type="radio" name="${questions.questionId}"
 						value="${questions.choice1}">${questions.choice1}</li>

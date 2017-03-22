@@ -9,6 +9,7 @@
 <title>UPDATED</title>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 <div class="form">
           <h1 class="sign">${studentMessage}</h1>
 <c:import url="./studentBack.jsp"/>

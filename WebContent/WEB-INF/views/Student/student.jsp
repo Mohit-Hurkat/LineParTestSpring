@@ -15,6 +15,7 @@ audio.play();
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 	<c:import url="./studentHeader.jsp"/>
 	<c:import url="../logout.jsp"/>
 </body>

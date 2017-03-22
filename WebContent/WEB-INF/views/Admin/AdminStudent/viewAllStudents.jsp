@@ -15,6 +15,7 @@
 <title>ADMIN STUDENT DELETE</title>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<div class="tab-group">
 				<div style="color: white;">

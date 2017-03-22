@@ -29,7 +29,7 @@ function Validation() {
 <title>ADMIN UPDATE</title>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if> 
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <div class="form">
 <form action="${pageContext.request.contextPath}/AdminController" method="post">
           

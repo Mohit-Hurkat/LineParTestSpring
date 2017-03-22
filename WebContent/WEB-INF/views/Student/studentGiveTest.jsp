@@ -27,6 +27,7 @@ input[type=radio] {
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<div class="tab-group">
 			<form:form method="post" action="./testSubject" commandName="subject">

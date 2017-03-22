@@ -10,6 +10,7 @@
 <link href="<c:url value='/static/css/style1.css' />" rel="stylesheet"></link>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<div class="tab-group">
  			<h1>${mess}</h1>	

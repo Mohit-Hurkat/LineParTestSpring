@@ -50,11 +50,24 @@ public class LoginActivityContoller {
 			model.addAttribute("user", new User());
 			return "home"; // "redirect:/signUp/";
 		} else {
+			student=studentLogic.search(student.getUsername());
+			if(student==null){
 			if (studentLogic.insert(student)) {
+				model.addAttribute("success", "Sign up Successful");
 				return "./Student/success";
 			}
+			else{
+				model.addAttribute("success", "Sign up Unsuccessful");
+				return "./Student/success";
+			}
+			}
+			else{
+				model.addAttribute("message", "Username Already Exist");
+				model.addAttribute("message", "Please Sign Up Using Another Username");
+				return "lost";
+			}
 		}
-		return "lost";
+		
 	}
 
 	@RequestMapping(value = "/logIn", method = RequestMethod.POST)

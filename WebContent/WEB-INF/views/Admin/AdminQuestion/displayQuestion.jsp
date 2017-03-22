@@ -18,6 +18,7 @@
 	<script src="<c:url value='/static/javascript/pdf.js'/>" type="text/javascript"></script>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<div class="tab-group">
 			<div id="content" style="color: white;">

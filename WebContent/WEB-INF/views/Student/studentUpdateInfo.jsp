@@ -31,6 +31,7 @@ function Validation() {
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 <div class="form">
 <form:form action="./studentUpdateFinal" method="post" commandName="student">
           <div class="top-row">

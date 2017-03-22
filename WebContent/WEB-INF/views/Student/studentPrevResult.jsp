@@ -26,6 +26,7 @@
 </style>
 </head>
 <body>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 	<div class="form">
 		<div class="tab-group">
 			<div style="color: white;" id="content">

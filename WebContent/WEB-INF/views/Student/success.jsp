@@ -12,7 +12,7 @@
 	<div class="form">
 		<div class="tab-group">
 			<h1 id="construct" style="font-family: samarkan;">NAMASTE</h1><br>
-			<h1>Successfully sign up</h1>
+			<h1>${success}</h1>
 			<br>
 	<c:import url="../logout.jsp"/>
 		</div>

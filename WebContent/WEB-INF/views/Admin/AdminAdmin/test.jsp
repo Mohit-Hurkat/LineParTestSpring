@@ -27,6 +27,7 @@ for (var i = 0; i < li.length; i++) {
 });
 </script>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <ul class="tab-menu">
   <li class="hola active" value="123"><a href="#">First</a></li>
   <li class="hola" value="hell"><a href="#">Second</a></li>

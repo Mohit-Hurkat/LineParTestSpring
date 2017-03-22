@@ -13,7 +13,7 @@
     <script src="../javascript/homepage.js" type="text/javascript"></script>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if> 
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <div class="form">
 <div class="tab-group">
  <form action="${pageContext.request.contextPath}/StudentController">

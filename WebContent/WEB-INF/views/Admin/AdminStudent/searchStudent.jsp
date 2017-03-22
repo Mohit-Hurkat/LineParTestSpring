@@ -11,7 +11,7 @@
 <title>ADMIN STUDENT SEARCH</title>
 </head>
 <body>
-<c:if test="${empty sessionScope.admin}"><c:redirect url="/home.jsp" /></c:if> 
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <% ArrayList<Student> studentList=(ArrayList<Student>)session.getAttribute("studentDisplay");%>
 <div class="form">
 <div class="tab-group">

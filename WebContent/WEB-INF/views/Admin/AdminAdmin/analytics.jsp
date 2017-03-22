@@ -14,6 +14,7 @@
 </script>
 </head>
 <body>
+<c:if test="${empty sessionScope.adminSession}"><c:redirect url="/" /></c:if> 
 <div class="form">
 		<div class="tab-group">
 <!-- <aside class="chart vert">

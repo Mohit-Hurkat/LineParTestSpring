@@ -23,9 +23,7 @@
 </style>
 </head>
 <body>
-	<c:if test="${empty sessionScope.student}">
-		<c:redirect url="/home.jsp" />
-	</c:if>
+<c:if test="${empty sessionScope.studentSession}"><c:redirect url="/" /></c:if> 
 	<%
 		ArrayList<PrintResult> resultList = (ArrayList<PrintResult>) session.getAttribute("sessionResultSet");
 		String result = (String) session.getAttribute("message1");
