@@ -46,7 +46,7 @@ input[type=radio] {
 							<tr>
 								<td>${subjectDisplay.subjectId}</td>
 								<td>${subjectDisplay.subject}</td>
-								<td>${subjectDisplay.start}%></td>
+								<td>${subjectDisplay.start}</td>
 								<td>${subjectDisplay.end}</td>
 								<td><form:radiobutton path="subjectId"
 									value="${subjectDisplay.getSubjectId()}"></form:radiobutton></td>
